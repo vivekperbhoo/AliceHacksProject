@@ -32,7 +32,7 @@
         android:text="Add a username to get started."
         android:textAlignment="textEnd"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.635"
         app:layout_constraintStart_toStartOf="parent" />
@@ -43,7 +43,7 @@
         android:textSize="13dp"
         android:fontFamily="@font/poppins_light"
         android:background="@drawable/username"
-        android:id="@+id/editText"
+        android:id="@+id/name"
         android:layout_width="200dp"
         android:layout_height="70dp"
         android:layout_marginBottom="40dp"

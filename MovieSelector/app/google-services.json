@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "523565351097",
+    "project_id": "alicehacks-1b22b",
+    "storage_bucket": "alicehacks-1b22b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523565351097:android:0f94f6706a629334dddb68",
+        "android_client_info": {
+          "package_name": "com.example.movieselector"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2EwA6rQtgBMUuCtynmz_kGlx1hhtuiZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

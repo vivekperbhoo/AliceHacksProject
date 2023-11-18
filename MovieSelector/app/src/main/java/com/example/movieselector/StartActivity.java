@@ -41,7 +41,6 @@ public class StartActivity extends AppCompatActivity {
                  if (validateName()){
                      createSession();
                  }
-
              }
          });
          join.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +78,6 @@ public class StartActivity extends AppCompatActivity {
                 Intent intent= new Intent(getApplicationContext(),CreateSession.class);
                 startActivity(intent);
                 finish();
-
             }
         });
 
@@ -92,13 +90,10 @@ public class StartActivity extends AppCompatActivity {
             name.setError("Enter username to proceed");
             name.requestFocus();
             return false;
-
         }
         else {
            name.setError(null);
            return true;
         }
-
-
     }
 }

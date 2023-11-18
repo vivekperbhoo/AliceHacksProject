@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 public class CreateSession extends AppCompatActivity {
     private ArrayList<User> users;
     private DatabaseReference reference;
-    private Button start;
+    private ImageButton start;
     private ListView listView;
 
     @Override
@@ -28,15 +29,23 @@ public class CreateSession extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_session);
         this.users= new ArrayList<>();
-        start= findViewById(R.id.start_sesh);
+        start= findViewById(R.id.button);
         listView= findViewById(R.id.list);
         reference= FirebaseDatabase.getInstance().getReference("Users");
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.child("Current Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user= snapshot.getValue(User.class);
-                users.add(user);
-                notify();
+                if(snapshot.exists()){
+                    for (DataSnapshot child: snapshot.getChildren()) {
+                        if(child.exists()){
+                            User user = child.getValue(User.class);
+                            if(user!=null){
+                                users.add(user);
+                            }
+                        }
+                    }
+                }
+
             }
 
             @Override

@@ -8,6 +8,7 @@ public class User {
         this.name= name;
         this.hasFinished=hasFinished;
     }
+    public User(){}
 
     public String getName() {
         return name;

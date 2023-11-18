@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,8 +16,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class StartActivity extends AppCompatActivity {
     private ImageButton create, join;
@@ -33,9 +38,8 @@ public class StartActivity extends AppCompatActivity {
          create.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 if(validateName()) {
+                 if (validateName()){
                      createSession();
-
                  }
 
              }
@@ -53,7 +57,7 @@ public class StartActivity extends AppCompatActivity {
     private void joinSession() {
         String username= name.getText().toString();
         User  user= new User(username,false);
-        reference.child(user.getName()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        reference.child("Current users").child(user.getName()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Intent intent= new Intent(getApplicationContext(),JoinSession.class);
@@ -67,10 +71,10 @@ public class StartActivity extends AppCompatActivity {
     private void createSession() {
         String username= name.getText().toString();
         User user= new User(username,false);
-        reference.child(user.getName()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        reference.child("Current users").child(user.getName()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                reference.child("session"+ user.getName()).setValue(user);
+                reference.child("Session").child("session"+ user.getName()).setValue(user);
                 Toast.makeText(StartActivity.this,"Session Created",Toast.LENGTH_SHORT).show();
                 Intent intent= new Intent(getApplicationContext(),CreateSession.class);
                 startActivity(intent);
@@ -80,17 +84,21 @@ public class StartActivity extends AppCompatActivity {
         });
 
     }
-    private Boolean validateName(){
-        String namee= name.getText().toString();
+    private boolean validateName(){
+        String namee= name.getText().toString().trim();
+        
+
         if(namee.isEmpty()){
             name.setError("Enter username to proceed");
             name.requestFocus();
             return false;
+
         }
         else {
-            name.setError(null);
-            return true;
+           name.setError(null);
+           return true;
         }
+
 
     }
 }

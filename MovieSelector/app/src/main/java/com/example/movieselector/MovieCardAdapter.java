@@ -42,7 +42,7 @@ public class MovieCardAdapter extends RecyclerView.Adapter<MovieCardAdapter.Movi
         holder.movie_rating.setText("Rating "+movie.getPopularity());
         holder.release_date.setText("Release Date "+movie.getReleaseDate());
         Picasso.get().load("https://image.tmdb.org/t/p/original"+movie.getPosterPath()).into(holder.poster);
-        //Add on Click here
+
         holder.itemView.startAnimation(animation);
 
 

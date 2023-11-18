@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#999493">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
+        <ImageView
+            android:layout_marginTop="50dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:background="@color/black"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MEAN GIRLS"/>
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2004"/>
+            </LinearLayout>
+            <TextView
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="running time    "/>
+            <TextView
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="directed by    "/>
+            <TextView
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="produced by    "/>
+            <TextView
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="starring    "/>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,11 +14,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MovieCardAdapter extends RecyclerView.Adapter<MovieCardAdapter.MovieHolder> {
-    private ArrayList<Movie> movieList;
+    private List<Movie.ResultsDTO> movieList;
     private Context context;
-    public MovieCardAdapter(ArrayList<Movie> movieList,Context context){
+    public MovieCardAdapter(List<Movie.ResultsDTO> movieList,Context context){
         this.movieList=movieList;
         this.context= context;
     }

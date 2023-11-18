@@ -1,5 +1,6 @@
 package com.example.movieselector;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,19 +14,22 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public class ListAdapter extends ArrayAdapter<User> {
-    public ListAdapter(Context context, ArrayList<User>users){
+
+    private Activity context;
+    private ArrayList<User> users;
+    public ListAdapter(Activity context, ArrayList<User>users){
         super(context,R.layout.list_item,users);
+        this.context= context;
+        this.users=users;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         User user = getItem(position);
-        if(convertView==null){
-            convertView= LayoutInflater.from(getContext()).inflate(R.layout.list_item,parent,false);
-        }
-        TextView currentUser= convertView.findViewById(R.id.user);
+        View view= LayoutInflater.from(context).inflate(R.layout.list_item,parent,false);
+        TextView currentUser= view.findViewById(R.id.user);
         currentUser.setText(user.getName());
-        return super.getView(position, convertView, parent);
+        return view;
     }
 }

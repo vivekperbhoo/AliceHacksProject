@@ -76,6 +76,7 @@ public class StartActivity extends AppCompatActivity {
                 reference.child("Session").child("session"+ user.getName()).setValue(user);
                 Toast.makeText(StartActivity.this,"Session Created",Toast.LENGTH_SHORT).show();
                 Intent intent= new Intent(getApplicationContext(),CreateSession.class);
+                intent.putExtra("Seshname","session"+user.getName());
                 startActivity(intent);
                 finish();
             }
@@ -84,7 +85,6 @@ public class StartActivity extends AppCompatActivity {
     }
     private boolean validateName(){
         String namee= name.getText().toString().trim();
-        
 
         if(namee.isEmpty()){
             name.setError("Enter username to proceed");

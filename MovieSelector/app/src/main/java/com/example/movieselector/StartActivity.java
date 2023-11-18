@@ -30,7 +30,6 @@ public class StartActivity extends AppCompatActivity {
         create= findViewById(R.id.create_sesh);
         name= findViewById(R.id.name);
         reference= FirebaseDatabase.getInstance().getReference("Users");
-
          create.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
@@ -71,6 +70,7 @@ public class StartActivity extends AppCompatActivity {
         reference.child(user.getName()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+                reference.child("session"+ user.getName()).setValue(user);
                 Toast.makeText(StartActivity.this,"Session Created",Toast.LENGTH_SHORT).show();
                 Intent intent= new Intent(getApplicationContext(),CreateSession.class);
                 startActivity(intent);

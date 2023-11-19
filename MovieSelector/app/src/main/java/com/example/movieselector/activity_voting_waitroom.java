@@ -31,6 +31,7 @@ public class activity_voting_waitroom extends AppCompatActivity {
                 if(session.getTotal()==list.size()){
 
                     Intent intent= new Intent(activity_voting_waitroom.this, Winner.class);
+                    intent.putExtra("seshID",seshID);
                     startActivity(intent);
                     finish();
                 }

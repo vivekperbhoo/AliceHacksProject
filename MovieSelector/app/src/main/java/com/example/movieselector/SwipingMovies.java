@@ -41,7 +41,8 @@ public class SwipingMovies extends AppCompatActivity{
         database = FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).child("selectedMovies");
 
         likesDB = FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).child("likesList");
-
+        database.keepSynced(true);
+        likesDB.keepSynced(true);
         movieList = new ArrayList<SwipeMovieCardInfo>();
 
         SwipeFlingAdapterView swipeFlingAdapterView = (SwipeFlingAdapterView) findViewById(R.id.card);

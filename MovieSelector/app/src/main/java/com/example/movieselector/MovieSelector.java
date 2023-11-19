@@ -115,7 +115,7 @@ public class MovieSelector extends AppCompatActivity {
                             Session session = snapshot.getValue(Session.class);
                             session.addMovie(movie);
                             ArrayList<Movie.ResultsDTO> list = session.getSelectedMovies();
-                            seshRef.child(sessionID).child("selectedMovies").setValue(list);
+                            seshRef.child(sessionID).setValue(session);
 
                         }
                     }

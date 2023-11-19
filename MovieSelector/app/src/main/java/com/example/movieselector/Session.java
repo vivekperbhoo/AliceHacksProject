@@ -7,14 +7,17 @@ import java.util.ArrayList;
 public class Session {
     private String sessionID;
     private boolean hasStarted;
+
     private ArrayList<User> sessionUsers;
     private boolean allUsersFinished;
+    private ArrayList<Integer> likesList = new ArrayList<>();
 
     public void setSelectedMovies(ArrayList<Movie.ResultsDTO> selectedMovies) {
         this.selectedMovies = selectedMovies;
     }
 
-    private ArrayList<Movie.ResultsDTO> selectedMovies = new ArrayList<>();;
+    private ArrayList<Movie.ResultsDTO> selectedMovies = new ArrayList<>();
+    ;
 
     public boolean getHasStarted() {
         return hasStarted;
@@ -31,22 +34,28 @@ public class Session {
     public void setSessionUsers(ArrayList<User> sessionUsers) {
         this.sessionUsers = sessionUsers;
     }
-    public ArrayList<Movie.ResultsDTO> getSelectedMovies(){
+
+    public ArrayList<Movie.ResultsDTO> getSelectedMovies() {
         return selectedMovies;
     }
-    public Session(){};
 
-    public Session(String sessionID,boolean allUsersFinished,boolean hasStarted, ArrayList<User> sessionUsers){
-        this.sessionID= sessionID;
-        this.sessionUsers=sessionUsers;
-        this.hasStarted=hasStarted;
-        this.allUsersFinished= allUsersFinished;
+    public Session() {
     }
-    public void selectMovie(Movie.ResultsDTO movie){
+
+    ;
+
+    public Session(String sessionID, boolean allUsersFinished, boolean hasStarted, ArrayList<User> sessionUsers) {
+        this.sessionID = sessionID;
+        this.sessionUsers = sessionUsers;
+        this.hasStarted = hasStarted;
+        this.allUsersFinished = allUsersFinished;
+    }
+
+    public void selectMovie(Movie.ResultsDTO movie) {
         selectedMovies.add(movie);
     }
 
-    public String  getSessionID() {
+    public String getSessionID() {
         return sessionID;
     }
 
@@ -62,11 +71,21 @@ public class Session {
         this.allUsersFinished = allUsersFinished;
     }
 
-    public void addUser(User user){
+    public void addUser(User user) {
         sessionUsers.add(user);
     }
 
-    public void addMovie(Movie.ResultsDTO movie){
+    public void addMovie(Movie.ResultsDTO movie) {
         selectedMovies.add(movie);
+        int index = selectedMovies.indexOf(movie);
+        likesList.add(index, 0);
+    }
+
+    public ArrayList<Integer> getLikesList() {
+        return likesList;
+    }
+
+    public void setLikesList(ArrayList<Integer> likesList) {
+        this.likesList = likesList;
     }
 }

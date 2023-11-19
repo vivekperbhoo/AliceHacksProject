@@ -15,14 +15,14 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class SwipingMovies extends AppCompatActivity{
+public class SwipingMovies extends AppCompatActivity {
     ArrayList<SwipeMovieCardInfo> movieList;
     MovieArrayAdapter movieAdapter;
 
     private String sessionID;
-    DatabaseReference database;
+    DatabaseReference database, likesDB;
 
-    int count = 0 ;
+    int count = 0;
 
 
     @Override
@@ -33,41 +33,37 @@ public class SwipingMovies extends AppCompatActivity{
         sessionID = getIntent().getStringExtra("seshID");
 
         database = FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).child("selectedMovies");
+        likesDB = FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).child("likesList");
 
         movieList = new ArrayList<SwipeMovieCardInfo>();
 
-        database.addListenerForSingleValueEvent(new ValueEventListener(){
+        database.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
+                if (snapshot.exists()) {
                     SwipeMovieCardInfo movie;
-                    for  (DataSnapshot child : snapshot.getChildren()){
+                    for (DataSnapshot child : snapshot.getChildren()) {
                         Movie.ResultsDTO mov = child.getValue(Movie.ResultsDTO.class);
 
-                        String posterpath = "https://image.tmdb.org/t/p/original"+mov.getPosterPath();
+                        String posterpath = "https://image.tmdb.org/t/p/original" + mov.getPosterPath();
 
                         String date = mov.getReleaseDate().substring(0, 4);
                         int year = Integer.parseInt(date);
 
-                        String title = mov.getTitle() ;
+                        String title = mov.getTitle();
 
                         String overview = "Overview: " + mov.getOverview();
 
-                        movie = new SwipeMovieCardInfo(posterpath,year,title,overview);
+                        movie = new SwipeMovieCardInfo(posterpath, year, title, overview);
                         movieList.add(movie);
                     }
                 }
-
             }
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
-
 
         SwipeFlingAdapterView swipeFlingAdapterView = (SwipeFlingAdapterView) findViewById(R.id.card);
 
@@ -93,8 +89,27 @@ public class SwipingMovies extends AppCompatActivity{
 
             @Override
             public void onRightCardExit(Object o) {
+                FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            Session session = snapshot.getValue(Session.class);
+                            if(session!=null){
+                                ArrayList<Integer> likesList = session.getLikesList();
+                                int likes = likesList.get(count-1);
+                                likesList.set(count-1, ++likes);
+                                FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).setValue(session);
+                            }
+                        }
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
+
 
             @Override
             public void onAdapterAboutToEmpty(int i) {
@@ -106,6 +121,6 @@ public class SwipingMovies extends AppCompatActivity{
 
             }
         });
+
     }
 }
-

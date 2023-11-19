@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class MovieArrayAdapter extends ArrayAdapter<SwipeMovieCardInfo> {
@@ -30,7 +32,8 @@ public class MovieArrayAdapter extends ArrayAdapter<SwipeMovieCardInfo> {
 
 
         ImageView posterImage = (ImageView) view.findViewById(R.id.posterImage);
-        posterImage.setImageResource(movieList.get(position).posterImage);
+        Picasso.get().load(movieList.get(position).posterPath).into(posterImage);
+        //posterPath.setImageResource(movieList.get(position).posterPath);
 
         TextView year = (TextView) view.findViewById(R.id.year);
         year.setText(Integer.toString(movieList.get(position).year));

@@ -105,7 +105,7 @@ public class MovieSelector extends AppCompatActivity {
     }
 
     public void selectMovie(View view) {
-        String tag = view.getTag().toString();
+        String tag = view.getTag().toString();  // movieId
         for(Movie.ResultsDTO movie: movies) {
             if (movie.getId().toString().equals(tag)) {
                 seshRef.child(sessionID).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -116,7 +116,6 @@ public class MovieSelector extends AppCompatActivity {
                             session.addMovie(movie);
                             ArrayList<Movie.ResultsDTO> list = session.getSelectedMovies();
                             seshRef.child(sessionID).child("selectedMovies").setValue(list);
-
 
                         }
                     }
@@ -130,7 +129,7 @@ public class MovieSelector extends AppCompatActivity {
             }
         }
 
-        Intent intent = new Intent(MovieSelector.this, WaitingForOthers.class);
+        Intent intent = new Intent(MovieSelector.this, SwipingMovies.class);
         intent.putExtra("seshID", sessionID);
         seshRef.child(sessionID).child("sessionUsers").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

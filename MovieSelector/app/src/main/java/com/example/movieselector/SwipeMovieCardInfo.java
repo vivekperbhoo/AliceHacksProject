@@ -1,11 +1,11 @@
 package com.example.movieselector;
 
 public class SwipeMovieCardInfo {
-    int posterImage, year;
-    String title, overview;
+    int year;
+    String posterPath, title, overview;
 
-    SwipeMovieCardInfo(int posterImage, int year, String title, String overview){
-        this.posterImage = posterImage;
+    SwipeMovieCardInfo(String posterPath, int year, String title, String overview){
+        this.posterPath = posterPath;
         this.year = year;
         this.title = title;
         this.overview = overview;

@@ -58,7 +58,7 @@ public class StartActivity extends AppCompatActivity {
     }
 
     private void joinSession() {
-        String username= name.getText().toString();
+        String username= name.getText().toString().trim();
         User  user= new User(username,false);
         reference.child("Current users").child(user.getName()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -74,7 +74,7 @@ public class StartActivity extends AppCompatActivity {
     }
 
     private void createSession() {
-        String username= name.getText().toString();
+        String username= name.getText().toString().trim();
         User user= new User(username,false);
         seshUsers.add(user);
         Session sesh= new Session("session"+user.getName(),false,false,seshUsers);

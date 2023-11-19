@@ -7,7 +7,7 @@ public class Session {
     private boolean hasStarted;
     private ArrayList<User> sessionUsers;
     private boolean allUsersFinished;
-    private ArrayList<Movie.ResultsDTO> selectedMovies=new ArrayList<>();
+    private ArrayList<Movie.ResultsDTO> selectedMovies;
 
     public boolean getHasStarted() {
         return hasStarted;
@@ -34,6 +34,7 @@ public class Session {
         this.sessionUsers=sessionUsers;
         this.hasStarted=hasStarted;
         this.allUsersFinished= allUsersFinished;
+        selectedMovies = new ArrayList<>();
     }
     public void selectMovie(Movie.ResultsDTO movie){
         selectedMovies.add(movie);
@@ -57,5 +58,9 @@ public class Session {
 
     public void addUser(User user){
         sessionUsers.add(user);
+    }
+
+    public void addMovie(Movie.ResultsDTO movie){
+        selectedMovies.add(movie);
     }
 }

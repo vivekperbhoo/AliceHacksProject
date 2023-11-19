@@ -1,10 +1,12 @@
 package com.example.movieselector;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +14,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,13 +39,18 @@ public class MovieSelector extends AppCompatActivity {
     private SearchView searchView;
     private ImageButton select_bttn;
     private TextView seshText;
+    private String sessionID;
+    private Session session;
     private List<Movie.ResultsDTO> movies;
+    DatabaseReference seshRef = FirebaseDatabase.getInstance().getReference("Users").child("Session");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_selector);
         seshText= findViewById(R.id.search_text);
         movies= new ArrayList<>();
+        sessionID = getIntent().getStringExtra("seshID");
 
         recyclerView= findViewById(R.id.recycle);
         recyclerView.setHasFixedSize(true);
@@ -50,6 +63,25 @@ public class MovieSelector extends AppCompatActivity {
 
         Retrofit retrofit= new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
         MovieSearchInterface movieSearch= retrofit.create(MovieSearchInterface.class);
+
+
+        //look for sesh obj
+        seshRef.child(sessionID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    session = snapshot.getValue(Session.class);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
         
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -83,10 +115,15 @@ public class MovieSelector extends AppCompatActivity {
     }
 
     public void selectMovie(View view) {
-        String tag= (String) view.getTag();
-        for(Movie.ResultsDTO kok: movies) {
-            if (kok.getId().equals(tag)) {
-                System.out.println("oko");
+        String tag = view.getTag().toString();
+        for(Movie.ResultsDTO movie: movies) {
+            if (movie.getId().toString().equals(tag)) {
+                session.addMovie(movie);
+                seshRef.child(sessionID).setValue(session);
+                Intent intent = new Intent(getApplicationContext(), WaitingForOthers.class);
+                intent.putExtra("seshID", sessionID);
+                startActivity(intent);
+                finish();
             }
         }
     }

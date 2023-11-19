@@ -112,6 +112,7 @@ public class JoinSession extends AppCompatActivity {
                             potentialSession = snapshot.getValue(Session.class);
                             if(potentialSession.getHasStarted()){
                                 Intent intent = new Intent(getApplicationContext(), MovieSelector.class);
+                                intent.putExtra("seshID", potentialSession.getSessionID());
                                 startActivity(intent);
                                 finish();
                             }

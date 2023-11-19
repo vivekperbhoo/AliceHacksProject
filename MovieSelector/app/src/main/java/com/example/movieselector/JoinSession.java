@@ -84,6 +84,7 @@ public class JoinSession extends AppCompatActivity {
                                             session.addUser(user);
                                             sessionRef.child(session.getSessionID()).setValue(session);
                                             potentialSession = session;
+                                            v.setEnabled(false);
                                         } else {
                                             Toast.makeText(JoinSession.this, "Session has already Started", Toast.LENGTH_SHORT).show();
                                         }

@@ -40,8 +40,8 @@ public class CreateSession extends AppCompatActivity {
         String seshId= intent.getStringExtra("Seshname");
         sesId.setText(sesId.getText()+" "+seshId);
         ListAdapter listAdapter= new ListAdapter(CreateSession.this,users);
-        reference= FirebaseDatabase.getInstance().getReference("Users");
-        reference.child("Current users").addValueEventListener(new ValueEventListener() {
+        reference= FirebaseDatabase.getInstance().getReference("Session Users");
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 users.clear();

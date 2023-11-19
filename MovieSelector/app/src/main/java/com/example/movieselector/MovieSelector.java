@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -26,6 +28,7 @@ public class MovieSelector extends AppCompatActivity {
     private RecyclerView recyclerView;
     private static String url="https://api.themoviedb.org";
     private SearchView searchView;
+    private ImageButton select_bttn;
     private TextView seshText;
     private List<Movie.ResultsDTO> movies;
     @Override
@@ -33,6 +36,7 @@ public class MovieSelector extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_selector);
         seshText= findViewById(R.id.search_text);
+        select_bttn= findViewById(R.id.select);
         movies= new ArrayList<>();
 
         recyclerView= findViewById(R.id.recycle);
@@ -78,8 +82,23 @@ public class MovieSelector extends AppCompatActivity {
                 return true;
             }
         });
+        select_bttn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tag = (String)v.getTag();
+                selectMovie(tag);
+            }
+        });
 
 
+    }
+
+    private void selectMovie(String tag) {
+        for(Movie.ResultsDTO kok: movies){
+            if(kok.getId().equals(tag)){
+
+            }
+        }
 
     }
 }

@@ -70,10 +70,12 @@ public class StartActivity extends AppCompatActivity {
     private void createSession() {
         String username= name.getText().toString();
         User user= new User(username,false);
+        Session sesh= new Session("session"+user.getName(),false);
         reference.child("Current users").child(user.getName()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                reference.child("Session").child("session"+ user.getName()).setValue(user);
+                reference.child("Session").child(sesh.getSessionID()).setValue(sesh);
+                reference.child("Session").child(sesh.getSessionID()).child("Session Users").child(user.getName()).setValue(user);
                 Toast.makeText(StartActivity.this,"Session Created",Toast.LENGTH_SHORT).show();
                 Intent intent= new Intent(getApplicationContext(),CreateSession.class);
                 intent.putExtra("Seshname","session"+user.getName());

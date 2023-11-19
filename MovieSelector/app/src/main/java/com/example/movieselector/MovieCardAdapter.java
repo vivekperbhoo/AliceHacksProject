@@ -1,7 +1,12 @@
 package com.example.movieselector;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.os.Handler;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,17 +14,24 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MovieCardAdapter extends RecyclerView.Adapter<MovieCardAdapter.MovieHolder> {
+    Bitmap bitmap;
+    Palette.Swatch swatch;
     private List<Movie.ResultsDTO> movieList;
     private Context context;
     public MovieCardAdapter(List<Movie.ResultsDTO> movieList,Context context){
@@ -42,6 +54,8 @@ public class MovieCardAdapter extends RecyclerView.Adapter<MovieCardAdapter.Movi
         holder.movie_rating.setText("Rating "+movie.getPopularity());
         holder.release_date.setText("Release Date "+movie.getReleaseDate());
         Picasso.get().load("https://image.tmdb.org/t/p/original"+movie.getPosterPath()).into(holder.poster);
+        //Add on Click here
+        holder.select_bttn.setTag(movie.getId());
 
         holder.itemView.startAnimation(animation);
 
@@ -52,18 +66,22 @@ public class MovieCardAdapter extends RecyclerView.Adapter<MovieCardAdapter.Movi
     public int getItemCount() {
         return movieList.size();
     }
+
     public static class MovieHolder extends RecyclerView.ViewHolder{
-        ImageView poster;
+        public ImageView poster;
         TextView movie_name;
         TextView movie_rating;
         TextView release_date;
         ImageButton select_bttn;
+        LinearLayout parent;
         public MovieHolder(View view){
             super(view);
             poster= view.findViewById(R.id.imageView3);
             movie_name= view.findViewById(R.id.titleText);
             movie_rating= view.findViewById(R.id.ratingText);
             release_date= view.findViewById(R.id.dateText);
+            parent = view.findViewById(R.id.parent);
+            select_bttn= view.findViewById(R.id.select);
         }
     }
 }

@@ -31,7 +31,7 @@ public class WaitingForOthers extends AppCompatActivity {
                     for (DataSnapshot child : snapshot.getChildren()) {
                         if(child.exists()) {
                             User user = child.getValue(User.class);
-                            if(!user.isHasFinished()){
+                            if(!user.getHasFinished()){
                                 return;
                             }
                         }

@@ -70,9 +70,6 @@ public class MovieSelector extends AppCompatActivity {
         //look for sesh obj
 
 
-
-
-        
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -130,7 +127,6 @@ public class MovieSelector extends AppCompatActivity {
         }
 
         Intent intent = new Intent(MovieSelector.this, WaitingForOthers.class);
-        intent.putExtra("seshID", sessionID);
         seshRef.child(sessionID).child("sessionUsers").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

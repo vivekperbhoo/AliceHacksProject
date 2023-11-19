@@ -29,7 +29,7 @@ public class MovieArrayAdapter extends ArrayAdapter<SwipeMovieCardInfo> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View view=LayoutInflater.from(context).inflate(R.layout.movie_swipe_card, parent, false);
-
+        view.setTag(movieList.get(position).title);
 
         ImageView posterImage = (ImageView) view.findViewById(R.id.posterImage);
         Picasso.get().load(movieList.get(position).posterPath).into(posterImage);

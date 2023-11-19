@@ -77,7 +77,7 @@ public class StartActivity extends AppCompatActivity {
         String username= name.getText().toString();
         User user= new User(username,false);
         seshUsers.add(user);
-        Session sesh= new Session("session"+user.getName(),false,seshUsers);
+        Session sesh= new Session("session"+user.getName(),false,false,seshUsers);
         reference.child("Current users").child(user.getName()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

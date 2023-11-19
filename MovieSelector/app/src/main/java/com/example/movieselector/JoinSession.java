@@ -77,7 +77,7 @@ public class JoinSession extends AppCompatActivity {
                                 Session session = child.getValue(Session.class);
                                 if (session != null) {
                                     if (session.getSessionID().equals(seshET.getText().toString().trim())) {
-                                        if (!session.hasStarted()) {
+                                        if (!session.getHasStarted()) {
                                             session.addUser(user);
                                             sessionRef.child(session.getSessionID()).setValue(session);
                                             potentialSession = session;
@@ -110,7 +110,7 @@ public class JoinSession extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             potentialSession = snapshot.getValue(Session.class);
-                            if(potentialSession.hasStarted()){
+                            if(potentialSession.getHasStarted()){
                                 Intent intent = new Intent(getApplicationContext(), MovieSelector.class);
                                 startActivity(intent);
                                 finish();

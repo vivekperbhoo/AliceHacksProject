@@ -4,19 +4,18 @@ import java.util.ArrayList;
 
 public class Session {
     private String sessionID;
+    private boolean hasStarted;
+    private ArrayList<User> sessionUsers;
+    private boolean allUsersFinished;
     private ArrayList<Movie.ResultsDTO> selectedMovies=new ArrayList<>();
 
-    public boolean hasStarted() {
+    public boolean getHasStarted() {
         return hasStarted;
     }
 
     public void setHasStarted(boolean hasStarted) {
         this.hasStarted = hasStarted;
     }
-
-    private boolean hasStarted;
-    private ArrayList<User> sessionUsers;
-    private boolean allUsersFinished;
 
     public ArrayList<User> getSessionUsers() {
         return sessionUsers;
@@ -30,10 +29,10 @@ public class Session {
     }
     public Session(){};
 
-    public Session(String sessionID,boolean allUsersFinished,ArrayList<User> sessionUsers){
+    public Session(String sessionID,boolean allUsersFinished,boolean hasStarted, ArrayList<User> sessionUsers){
         this.sessionID= sessionID;
         this.sessionUsers=sessionUsers;
-        this.hasStarted=false;
+        this.hasStarted=hasStarted;
         this.allUsersFinished= allUsersFinished;
     }
     public void selectMovie(Movie.ResultsDTO movie){
@@ -57,7 +56,6 @@ public class Session {
     }
 
     public void addUser(User user){
-
         sessionUsers.add(user);
     }
 }

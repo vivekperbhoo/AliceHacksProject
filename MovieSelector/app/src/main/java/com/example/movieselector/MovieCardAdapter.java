@@ -19,7 +19,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -31,7 +30,6 @@ import java.util.List;
 
 public class MovieCardAdapter extends RecyclerView.Adapter<MovieCardAdapter.MovieHolder> {
     Bitmap bitmap;
-    Palette.Swatch swatch;
     private List<Movie.ResultsDTO> movieList;
     private Context context;
     public MovieCardAdapter(List<Movie.ResultsDTO> movieList,Context context){

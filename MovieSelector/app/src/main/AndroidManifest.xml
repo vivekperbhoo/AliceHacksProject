@@ -12,6 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieSelector"
         tools:targetApi="31">
+
+        <activity
+            android:name=".MovieArrayAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".SwipeMovieCardInfo"
+            android:exported="false" />
+        <activity
+            android:name=".SwipingMovies"
+            android:exported="false" />
         <activity
             android:name=".WaitingForOthers"
             android:exported="false" />

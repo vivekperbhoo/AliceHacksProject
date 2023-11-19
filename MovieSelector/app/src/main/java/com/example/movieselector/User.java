@@ -18,7 +18,7 @@ public class User {
         this.name = name;
     }
 
-    public boolean isHasFinished() {
+    public boolean getHasFinished() {
         return hasFinished;
     }
 

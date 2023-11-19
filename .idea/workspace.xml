@@ -9,7 +9,21 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fff3b1fd-289a-4b55-99d6-49e7151a0889" name="Changes" comment="" />
+    <list default="true" id="fff3b1fd-289a-4b55-99d6-49e7151a0889" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/Winner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/activity_voting_waitroom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/res/layout/activity_voting_waitroom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/res/layout/activity_winner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/MovieArrayAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/MovieArrayAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/MovieSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/MovieSelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/Session.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/SwipingMovies.java" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/SwipingMovies.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/WaitingForOthers.java" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/WaitingForOthers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/res/layout/activity_waiting_for_others.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/res/layout/activity_waiting_for_others.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,24 +48,6 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="MovieSelector" type="f1a62948:ProjectNode" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="MovieSelector" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="MovieSelector" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="MovieSelector" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="other" type="c8890929:TasksNode$1" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -62,8 +58,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -84,20 +80,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "/Users/oce/Projects/Flixder/AliceHacksProject/MovieSelector/app/src/main/res/drawable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/oce/Projects/Flixder/AliceHacksProject/MovieSelector/app/src/main/res/drawable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/MovieSelector/app/src/main/res/drawable" />
+    </key>
+    <key name="android.template.-2021231524">
+      <recent name="com.example.movieselector" />
     </key>
   </component>
   <component name="RunManager">
@@ -176,6 +175,17 @@
       <updated>1700303001556</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

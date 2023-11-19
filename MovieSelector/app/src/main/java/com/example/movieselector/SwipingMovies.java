@@ -20,7 +20,8 @@ public class SwipingMovies extends AppCompatActivity{
     MovieArrayAdapter movieAdapter;
 
     private String sessionID;
-    DatabaseReference database;
+
+    DatabaseReference database, likesDB;
 
     int count = 0 ;
 
@@ -34,7 +35,13 @@ public class SwipingMovies extends AppCompatActivity{
 
         database = FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).child("selectedMovies");
 
+        likesDB = FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).child("likesList");
+
         movieList = new ArrayList<SwipeMovieCardInfo>();
+
+        SwipeFlingAdapterView swipeFlingAdapterView = (SwipeFlingAdapterView) findViewById(R.id.card);
+
+        movieAdapter = new MovieArrayAdapter(this, movieList);
 
         database.addListenerForSingleValueEvent(new ValueEventListener(){
             @Override
@@ -55,6 +62,9 @@ public class SwipingMovies extends AppCompatActivity{
 
                         movie = new SwipeMovieCardInfo(posterpath,year,title,overview);
                         movieList.add(movie);
+
+
+                        movieAdapter.notifyDataSetChanged();
                     }
                 }
 
@@ -67,11 +77,6 @@ public class SwipingMovies extends AppCompatActivity{
             }
         });
 
-
-
-        SwipeFlingAdapterView swipeFlingAdapterView = (SwipeFlingAdapterView) findViewById(R.id.card);
-
-        movieAdapter = new MovieArrayAdapter(this, movieList);
 
         // Ask girish about nofity data set change
 
@@ -93,7 +98,25 @@ public class SwipingMovies extends AppCompatActivity{
 
             @Override
             public void onRightCardExit(Object o) {
+                FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            Session session = snapshot.getValue(Session.class);
+                            if(session!=null){
+                                ArrayList<Integer> likesList = session.getLikesList();
+                                int likes = likesList.get(count-1);
+                                likesList.set(count-1, ++likes);
+                                FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).setValue(session);
+                            }
+                        }
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
 
             @Override

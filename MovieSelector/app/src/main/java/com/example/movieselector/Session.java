@@ -10,6 +10,8 @@ public class Session {
     private ArrayList<User> sessionUsers;
     private boolean allUsersFinished;
 
+    private ArrayList<Integer> likesList = new ArrayList<>();
+
     public void setSelectedMovies(ArrayList<Movie.ResultsDTO> selectedMovies) {
         this.selectedMovies = selectedMovies;
     }
@@ -54,7 +56,7 @@ public class Session {
         this.sessionID = sessionID;
     }
 
-    public boolean isAllUsersFinished() {
+    public boolean getAllUsersFinished() {
         return allUsersFinished;
     }
 
@@ -66,7 +68,18 @@ public class Session {
         sessionUsers.add(user);
     }
 
-    public void addMovie(Movie.ResultsDTO movie){
+    public void addMovie(Movie.ResultsDTO movie) {
         selectedMovies.add(movie);
+        int index = selectedMovies.indexOf(movie);
+        likesList.add(index, 0);
     }
+
+    public ArrayList<Integer> getLikesList() {
+        return likesList;
+    }
+
+    public void setLikesList(ArrayList<Integer> likesList) {
+        this.likesList = likesList;
+    }
+
 }

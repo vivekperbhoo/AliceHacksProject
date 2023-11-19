@@ -115,7 +115,7 @@ public class MovieSelector extends AppCompatActivity {
                             Session session = snapshot.getValue(Session.class);
                             session.addMovie(movie);
                             ArrayList<Movie.ResultsDTO> list = session.getSelectedMovies();
-                            seshRef.child(sessionID).child("selectedMovies").setValue(list);
+                            seshRef.child(sessionID).setValue(session);
 
                         }
                     }
@@ -135,12 +135,16 @@ public class MovieSelector extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
+                    Log.d("debugger", "good 1");
                     for (DataSnapshot child : snapshot.getChildren()) {
                         if (child.exists()) {
+                            Log.d("debugger", "good 2");
                             User user = child.getValue(User.class);
                             if (user != null) {
+                                Log.d("debugger", "good 3");
                                 if (user.getName().equals(username)) {
                                     user.setHasFinished(true);
+                                    Log.d("debugger", "good 4");
                                     String key = child.getKey();
                                     seshRef.child(sessionID).child("sessionUsers").child(key).setValue(user);
                                 }

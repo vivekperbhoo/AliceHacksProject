@@ -1,5 +1,7 @@
 package com.example.movieselector;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public class Session {
@@ -7,7 +9,7 @@ public class Session {
     private boolean hasStarted;
     private ArrayList<User> sessionUsers;
     private boolean allUsersFinished;
-    private ArrayList<Movie.ResultsDTO> selectedMovies;
+    private ArrayList<Movie.ResultsDTO> selectedMovies = new ArrayList<>();;
 
     public boolean getHasStarted() {
         return hasStarted;
@@ -34,7 +36,6 @@ public class Session {
         this.sessionUsers=sessionUsers;
         this.hasStarted=hasStarted;
         this.allUsersFinished= allUsersFinished;
-        selectedMovies = new ArrayList<>();
     }
     public void selectMovie(Movie.ResultsDTO movie){
         selectedMovies.add(movie);

@@ -119,7 +119,9 @@ public class MovieSelector extends AppCompatActivity {
         for(Movie.ResultsDTO movie: movies) {
             if (movie.getId().toString().equals(tag)) {
                 session.addMovie(movie);
-                seshRef.child(sessionID).setValue(session);
+                ArrayList<Movie.ResultsDTO> list = session.getSelectedMovies();
+                seshRef.child(sessionID).child("selectedMovies").setValue(list);
+
                 Intent intent = new Intent(getApplicationContext(), WaitingForOthers.class);
                 intent.putExtra("seshID", sessionID);
                 startActivity(intent);

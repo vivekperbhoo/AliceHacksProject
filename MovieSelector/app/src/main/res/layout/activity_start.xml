@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pink"
+    android:background="@drawable/startbg"
     tools:context=".StartActivity">
 
     <TextView
@@ -107,4 +107,5 @@
         app:layout_constraintStart_toStartOf="@+id/create_sesh"
         app:layout_constraintTop_toTopOf="@+id/create_sesh"
         app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

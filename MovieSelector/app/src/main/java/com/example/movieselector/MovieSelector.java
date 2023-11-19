@@ -1,6 +1,7 @@
 package com.example.movieselector;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,7 +51,7 @@ public class MovieSelector extends AppCompatActivity {
 
         Retrofit retrofit= new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
         MovieSearchInterface movieSearch= retrofit.create(MovieSearchInterface.class);
-
+        
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -61,8 +62,6 @@ public class MovieSelector extends AppCompatActivity {
                     public void onResponse(Call<Movie> call, Response<Movie> response) {
                         Movie movie=response.body();
                         List<Movie.ResultsDTO> movieList=movie.getResults();
-                        Movie.ResultsDTO kok= movieList.get(0);
-                        Log.d("kok", kok.getPosterPath());
                         movies.addAll(movieList);
                         cardAdapter.notifyDataSetChanged();
 

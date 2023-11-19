@@ -37,7 +37,7 @@ public class WaitingForOthers extends AppCompatActivity {
                         }
                     }
                     Intent intent = new Intent(getApplicationContext(), SwipingMovies.class);
-                    intent.putExtra("seshId",seshID);
+                    intent.putExtra("seshID",seshID);
                     startActivity(intent);
                     finish();
                     removeListener();

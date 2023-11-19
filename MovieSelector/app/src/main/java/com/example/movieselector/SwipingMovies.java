@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +36,7 @@ public class SwipingMovies extends AppCompatActivity{
         setContentView(R.layout.swipe_adapter);
 
         sessionID = getIntent().getStringExtra("seshID");
+        FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).keepSynced(true);
 
         database = FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).child("selectedMovies");
 
@@ -93,6 +96,7 @@ public class SwipingMovies extends AppCompatActivity{
                 // do if statement : if movieList
                 total++;
                 if (movieList.size() == 0){
+
                     FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -115,6 +119,7 @@ public class SwipingMovies extends AppCompatActivity{
                     });
 
                     Intent intent = new Intent(SwipingMovies.this, activity_voting_waitroom.class);
+                    intent.putExtra("seshID",sessionID);
                     startActivity(intent);
                     finish();
                 }

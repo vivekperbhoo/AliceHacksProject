@@ -63,6 +63,8 @@ public class MovieSelector extends AppCompatActivity {
         searchView= findViewById(R.id.search);
         searchView.clearFocus();
 
+        seshRef.child(sessionID).keepSynced(true);
+
         Retrofit retrofit= new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
         MovieSearchInterface movieSearch= retrofit.create(MovieSearchInterface.class);
 

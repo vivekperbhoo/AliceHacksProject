@@ -84,6 +84,7 @@ public class StartActivity extends AppCompatActivity {
                 reference.child("Session").child(sesh.getSessionID()).setValue(sesh);
                 Toast.makeText(StartActivity.this,"Session Created",Toast.LENGTH_SHORT).show();
                 Intent intent= new Intent(getApplicationContext(),CreateSession.class);
+                intent.putExtra("Username",username);
                 intent.putExtra("Seshname","session"+user.getName());
                 startActivity(intent);
                 finish();

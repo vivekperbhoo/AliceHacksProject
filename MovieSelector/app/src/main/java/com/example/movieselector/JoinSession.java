@@ -27,6 +27,7 @@ public class JoinSession extends AppCompatActivity {
     private Intent intent;
     private boolean intentChanged=false;
     private User user;
+    private String username;
     private EditText seshET;
     private TextView teleTxt;
     private Session potentialSession;
@@ -42,7 +43,7 @@ public class JoinSession extends AppCompatActivity {
 
         intent = getIntent();
 
-        String username = intent.getStringExtra("Username");
+        username = intent.getStringExtra("Username");
 
         //find current user in db
         currentUsersRef.addValueEventListener(new ValueEventListener() {
@@ -115,6 +116,7 @@ public class JoinSession extends AppCompatActivity {
                             if(potentialSession.getHasStarted()){
                                 Intent intent = new Intent(getApplicationContext(), MovieSelector.class);
                                 intent.putExtra("seshID", potentialSession.getSessionID());
+                                intent.putExtra("Username",username);
                                 startActivity(intent);
                                 finish();
                                 removeListener();

@@ -39,6 +39,7 @@ public class MovieSelector extends AppCompatActivity {
     private SearchView searchView;
     private ImageButton select_bttn;
     private TextView seshText;
+    private String username;
     private String sessionID;
 
     private List<Movie.ResultsDTO> movies;
@@ -50,6 +51,7 @@ public class MovieSelector extends AppCompatActivity {
         setContentView(R.layout.activity_movie_selector);
         seshText= findViewById(R.id.search_text);
         movies= new ArrayList<>();
+        username= getIntent().getStringExtra("Username");
         sessionID = getIntent().getStringExtra("seshID");
 
         recyclerView= findViewById(R.id.recycle);
@@ -130,7 +132,32 @@ public class MovieSelector extends AppCompatActivity {
 
         Intent intent = new Intent(MovieSelector.this, WaitingForOthers.class);
         intent.putExtra("seshID", sessionID);
-        Log.d("kok", "sanz intent");
+        seshRef.child(sessionID).child("sessionUsers").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot child : snapshot.getChildren()) {
+                        if (child.exists()) {
+                            User user = child.getValue(User.class);
+                            if (user != null) {
+                                if (user.getName().equals(username)) {
+                                    user.setHasFinished(true);
+                                    String key = child.getKey();
+                                    seshRef.child(sessionID).child("sessionUsers").child(key).setValue(user);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        intent.putExtra("Username",username);
+        intent.putExtra("seshID",sessionID);
         startActivity(intent);
         finish();
     }

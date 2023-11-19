@@ -26,6 +26,7 @@ public class CreateSession extends AppCompatActivity {
     private ImageButton start;
     private ListView listView;
     private String seshID;
+    private String username;
     private Intent intent;
     private Session sesh;
 
@@ -39,6 +40,7 @@ public class CreateSession extends AppCompatActivity {
         sesId= findViewById(R.id.sess_text);
         listView= findViewById(R.id.list);
         intent=getIntent();
+        username= intent.getStringExtra("Username");
         seshID= intent.getStringExtra("Seshname");
         sesId.setText(sesId.getText()+" "+seshID);
         ListAdapter listAdapter= new ListAdapter(CreateSession.this,users);
@@ -76,6 +78,7 @@ public class CreateSession extends AppCompatActivity {
     private void startSession() {
         Intent intent= new Intent(getApplicationContext(),MovieSelector.class);
         intent.putExtra("seshID",seshID);
+        intent.putExtra("Username",username);
         sesh.setHasStarted(true);
         reference.child(seshID).child("hasStarted").setValue(true);
         startActivity(intent);

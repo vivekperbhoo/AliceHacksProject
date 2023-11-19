@@ -2,6 +2,8 @@ package com.example.movieselector;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -23,7 +25,7 @@ public class SwipingMovies extends AppCompatActivity{
 
     DatabaseReference database, likesDB;
 
-    int count = 0 ;
+    int count,total = 0 ;
 
 
     @Override
@@ -89,6 +91,33 @@ public class SwipingMovies extends AppCompatActivity{
                 count++;
                 Log.d("swiping", "Remove" + count);
                 // do if statement : if movieList
+                total++;
+                if (movieList.size() == 0){
+                    FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.exists()){
+                                Session session = snapshot.getValue(Session.class);
+                                if(session!=null){
+
+                                    int sum = session.getTotal();
+                                    session.setTotal(sum + total);
+
+                                    FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).setValue(session);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                    Intent intent = new Intent(SwipingMovies.this, activity_voting_waitroom.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
 
             @Override

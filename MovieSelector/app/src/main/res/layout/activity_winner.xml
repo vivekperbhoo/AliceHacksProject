@@ -7,17 +7,17 @@
 
     <LinearLayout
         android:layout_width="320dp"
-        android:layout_height="600dp"
+        android:layout_height="500dp"
         android:background="@drawable/posterbg"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.633">
+        app:layout_constraintVertical_bias="0.5">
 
         <ImageView
             android:id="@+id/posterImage"
@@ -25,10 +25,6 @@
             android:layout_height="250dp"
             android:layout_marginTop="50dp"
             android:background="#B3ACAC" />
-
-        <ScrollView
-            android:layout_width="250dp"
-            android:layout_height="250dp">
 
             <LinearLayout
                 android:layout_width="255dp"
@@ -61,7 +57,6 @@
 
 
             </LinearLayout>
-        </ScrollView>
 
     </LinearLayout>
 

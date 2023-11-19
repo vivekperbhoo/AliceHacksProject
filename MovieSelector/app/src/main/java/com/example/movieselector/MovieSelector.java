@@ -109,8 +109,10 @@ public class MovieSelector extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists()){
+                            Log.d("debugger", "baddie 1");
                             Session session = snapshot.getValue(Session.class);
                             session.addMovie(movie);
+                            Log.d("debugger", "baddie 2");
                             ArrayList<Movie.ResultsDTO> list = session.getSelectedMovies();
                             seshRef.child(sessionID).setValue(session);
 

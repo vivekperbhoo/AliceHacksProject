@@ -10,6 +10,7 @@ public class Session {
     private ArrayList<User> sessionUsers;
     private boolean allUsersFinished;
 
+    private  int total;
     private ArrayList<Integer> likesList = new ArrayList<>();
 
     public void setSelectedMovies(ArrayList<Movie.ResultsDTO> selectedMovies) {
@@ -43,6 +44,7 @@ public class Session {
         this.sessionUsers=sessionUsers;
         this.hasStarted=hasStarted;
         this.allUsersFinished= allUsersFinished;
+        this.total=0;
     }
     public void selectMovie(Movie.ResultsDTO movie){
         selectedMovies.add(movie);
@@ -80,6 +82,14 @@ public class Session {
 
     public void setLikesList(ArrayList<Integer> likesList) {
         this.likesList = likesList;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
     }
 
 }

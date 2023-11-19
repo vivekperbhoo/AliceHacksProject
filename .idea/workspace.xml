@@ -9,20 +9,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fff3b1fd-289a-4b55-99d6-49e7151a0889" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/Winner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/activity_voting_waitroom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/res/layout/activity_voting_waitroom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/res/layout/activity_winner.xml" afterDir="false" />
+    <list default="true" id="fff3b1fd-289a-4b55-99d6-49e7151a0889" name="Changes" comment="Ammendments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/MovieArrayAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/MovieArrayAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/MovieSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/MovieSelector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/Session.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/SwipingMovies.java" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/SwipingMovies.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/WaitingForOthers.java" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/java/com/example/movieselector/WaitingForOthers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/res/layout/activity_waiting_for_others.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/res/layout/activity_waiting_for_others.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/res/layout/activity_voting_waitroom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/res/layout/activity_voting_waitroom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovieSelector/app/src/main/res/layout/activity_winner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MovieSelector/app/src/main/res/layout/activity_winner.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,17 +73,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/oce/Projects/Flixder/AliceHacksProject/MovieSelector/app/src/main/res/drawable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "/Users/oce/Projects/AliceHacks/AliceHacksProject/MovieSelector/app/src/main/res/drawable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/MovieSelector/app/src/main/res/drawable" />
@@ -174,6 +167,14 @@
       <option name="presentableId" value="Default" />
       <updated>1700303001556</updated>
     </task>
+    <task id="LOCAL-00001" summary="Ammendments">
+      <created>1700400333570</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700400333570</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -189,5 +190,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Ammendments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ammendments" />
   </component>
 </project>

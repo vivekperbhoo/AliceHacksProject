@@ -35,6 +35,7 @@ public class SwipingMovies extends AppCompatActivity{
         database = FirebaseDatabase.getInstance().getReference("Users").child("Session").child(sessionID).child("selectedMovies");
 
         movieList = new ArrayList<SwipeMovieCardInfo>();
+        movieAdapter = new MovieArrayAdapter(this, movieList);
 
         database.addListenerForSingleValueEvent(new ValueEventListener(){
             @Override
@@ -56,7 +57,7 @@ public class SwipingMovies extends AppCompatActivity{
                         movie = new SwipeMovieCardInfo(posterpath,year,title,overview);
                         movieList.add(movie);
                     }
-                }
+                }movieAdapter.notifyDataSetChanged();
 
             }
 
@@ -71,7 +72,7 @@ public class SwipingMovies extends AppCompatActivity{
 
         SwipeFlingAdapterView swipeFlingAdapterView = (SwipeFlingAdapterView) findViewById(R.id.card);
 
-        movieAdapter = new MovieArrayAdapter(this, movieList);
+
 
         // Ask girish about nofity data set change
 

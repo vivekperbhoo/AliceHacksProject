@@ -129,7 +129,7 @@ public class MovieSelector extends AppCompatActivity {
             }
         }
 
-        Intent intent = new Intent(MovieSelector.this, SwipingMovies.class);
+        Intent intent = new Intent(MovieSelector.this, WaitingForOthers.class);
         intent.putExtra("seshID", sessionID);
         seshRef.child(sessionID).child("sessionUsers").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

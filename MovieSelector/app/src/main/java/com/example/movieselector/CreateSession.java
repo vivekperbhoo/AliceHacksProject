@@ -25,7 +25,9 @@ public class CreateSession extends AppCompatActivity {
     private DatabaseReference reference;
     private ImageButton start;
     private ListView listView;
+    private String seshID;
     private Intent intent;
+    private Session sesh;
 
 
     @Override
@@ -37,16 +39,16 @@ public class CreateSession extends AppCompatActivity {
         sesId= findViewById(R.id.sess_text);
         listView= findViewById(R.id.list);
         intent=getIntent();
-        String seshId= intent.getStringExtra("Seshname");
-        sesId.setText(sesId.getText()+" "+seshId);
+        seshID= intent.getStringExtra("Seshname");
+        sesId.setText(sesId.getText()+" "+seshID);
         ListAdapter listAdapter= new ListAdapter(CreateSession.this,users);
         reference= FirebaseDatabase.getInstance().getReference("Users").child("Session");
-        reference.child(seshId).addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.child(seshID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 users.clear();
                 if(snapshot.exists()){
-                    Session sesh= snapshot.getValue(Session.class);
+                    sesh= snapshot.getValue(Session.class);
                     if(sesh!=null) {
                         Log.d("sessionusers", sesh.getSessionUsers().get(0).getName());
                         users.addAll(sesh.getSessionUsers());
@@ -73,6 +75,9 @@ public class CreateSession extends AppCompatActivity {
 
     private void startSession() {
         Intent intent= new Intent(getApplicationContext(),MovieSelector.class);
+        intent.putExtra("seshID",seshID);
+        sesh.setHasStarted(true);
+        reference.child(seshID).child("hasStarted").setValue(true);
         startActivity(intent);
         finish();
     }

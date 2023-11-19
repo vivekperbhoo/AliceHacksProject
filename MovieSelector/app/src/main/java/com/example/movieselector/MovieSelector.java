@@ -88,7 +88,6 @@ public class MovieSelector extends AppCompatActivity {
             if (kok.getId().equals(tag)) {
                 System.out.println("oko");
             }
-
         }
     }
 }

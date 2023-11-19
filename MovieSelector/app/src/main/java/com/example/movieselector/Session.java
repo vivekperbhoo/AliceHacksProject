@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 public class Session {
     private String sessionID;
+    private ArrayList<Movie.ResultsDTO> selectedMovies=new ArrayList<>();
 
-    public boolean isHasStarted() {
+    public boolean hasStarted() {
         return hasStarted;
     }
 
@@ -24,6 +25,9 @@ public class Session {
     public void setSessionUsers(ArrayList<User> sessionUsers) {
         this.sessionUsers = sessionUsers;
     }
+    public ArrayList<Movie.ResultsDTO> getSelectedMovies(){
+        return selectedMovies;
+    }
     public Session(){};
 
     public Session(String sessionID,boolean allUsersFinished,ArrayList<User> sessionUsers){
@@ -31,6 +35,9 @@ public class Session {
         this.sessionUsers=sessionUsers;
         this.hasStarted=false;
         this.allUsersFinished= allUsersFinished;
+    }
+    public void selectMovie(Movie.ResultsDTO movie){
+        selectedMovies.add(movie);
     }
 
     public String  getSessionID() {
@@ -50,6 +57,7 @@ public class Session {
     }
 
     public void addUser(User user){
+
         sessionUsers.add(user);
     }
 }

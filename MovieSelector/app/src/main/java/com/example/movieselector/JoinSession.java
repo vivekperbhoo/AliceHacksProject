@@ -20,10 +20,12 @@ import com.google.firebase.database.ValueEventListener;
 
 public class JoinSession extends AppCompatActivity {
     private ImageButton connectBtn;
+    ValueEventListener l;
     private DatabaseReference sessionRef = FirebaseDatabase.getInstance().getReference("Users").child("Session");
 
     private DatabaseReference currentUsersRef = FirebaseDatabase.getInstance().getReference("Users").child("Current users");
     private Intent intent;
+    private boolean intentChanged=false;
     private User user;
     private EditText seshET;
     private TextView teleTxt;
@@ -102,7 +104,7 @@ public class JoinSession extends AppCompatActivity {
             }
         });
 
-        sessionRef.addValueEventListener(new ValueEventListener() {
+         l=sessionRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(potentialSession != null){
@@ -115,6 +117,7 @@ public class JoinSession extends AppCompatActivity {
                                 intent.putExtra("seshID", potentialSession.getSessionID());
                                 startActivity(intent);
                                 finish();
+                                removeListener();
                             }
                         }
 
@@ -134,5 +137,8 @@ public class JoinSession extends AppCompatActivity {
 
             }
         });
+    }
+    public void removeListener(){
+        sessionRef.removeEventListener(l);
     }
 }

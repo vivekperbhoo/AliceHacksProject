@@ -9,6 +9,11 @@ public class Session {
     private boolean hasStarted;
     private ArrayList<User> sessionUsers;
     private boolean allUsersFinished;
+
+    public void setSelectedMovies(ArrayList<Movie.ResultsDTO> selectedMovies) {
+        this.selectedMovies = selectedMovies;
+    }
+
     private ArrayList<Movie.ResultsDTO> selectedMovies = new ArrayList<>();;
 
     public boolean getHasStarted() {

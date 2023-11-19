@@ -40,7 +40,7 @@ public class MovieSelector extends AppCompatActivity {
     private ImageButton select_bttn;
     private TextView seshText;
     private String sessionID;
-    private Session session;
+
     private List<Movie.ResultsDTO> movies;
     DatabaseReference seshRef = FirebaseDatabase.getInstance().getReference("Users").child("Session");
 
@@ -66,19 +66,7 @@ public class MovieSelector extends AppCompatActivity {
 
 
         //look for sesh obj
-        seshRef.child(sessionID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    session = snapshot.getValue(Session.class);
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
 
 
@@ -118,15 +106,32 @@ public class MovieSelector extends AppCompatActivity {
         String tag = view.getTag().toString();
         for(Movie.ResultsDTO movie: movies) {
             if (movie.getId().toString().equals(tag)) {
-                session.addMovie(movie);
-                ArrayList<Movie.ResultsDTO> list = session.getSelectedMovies();
-                seshRef.child(sessionID).child("selectedMovies").setValue(list);
+                seshRef.child(sessionID).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            Session session = snapshot.getValue(Session.class);
+                            session.addMovie(movie);
+                            ArrayList<Movie.ResultsDTO> list = session.getSelectedMovies();
+                            seshRef.child(sessionID).child("selectedMovies").setValue(list);
 
-                Intent intent = new Intent(getApplicationContext(), WaitingForOthers.class);
-                intent.putExtra("seshID", sessionID);
-                startActivity(intent);
-                finish();
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
             }
         }
+
+        Intent intent = new Intent(MovieSelector.this, WaitingForOthers.class);
+        intent.putExtra("seshID", sessionID);
+        Log.d("kok", "sanz intent");
+        startActivity(intent);
+        finish();
     }
 }

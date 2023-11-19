@@ -50,9 +50,9 @@ public class MovieCardAdapter extends RecyclerView.Adapter<MovieCardAdapter.Movi
     public void onBindViewHolder(@NonNull MovieCardAdapter.MovieHolder holder, int position) {
         Movie.ResultsDTO movie= movieList.get(position);
         Animation animation= AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
-        holder.movie_name.setText("Title "+movie.getOriginalTitle());
-        holder.movie_rating.setText("Rating "+movie.getPopularity());
-        holder.release_date.setText("Release Date "+movie.getReleaseDate());
+        holder.movie_name.setText("Title: "+movie.getOriginalTitle());
+        holder.movie_rating.setText("Rating: "+movie.getPopularity());
+        holder.release_date.setText("Release Date: "+movie.getReleaseDate());
         Picasso.get().load("https://image.tmdb.org/t/p/original"+movie.getPosterPath()).into(holder.poster);
         //Add on Click here
         holder.select_bttn.setTag(movie.getId());

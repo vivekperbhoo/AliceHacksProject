@@ -64,6 +64,7 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Intent intent= new Intent(getApplicationContext(),JoinSession.class);
+                intent.putExtra("Username", username);
                 startActivity(intent);
                 finish();
             }

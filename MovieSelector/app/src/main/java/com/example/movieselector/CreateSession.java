@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,7 +33,7 @@ public class CreateSession extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_session);
         this.users= new ArrayList<>();
-        start= findViewById(R.id.button);
+        start= findViewById(R.id.start_bttn);
         sesId= findViewById(R.id.sess_text);
         listView= findViewById(R.id.list);
         intent=getIntent();

@@ -49,7 +49,7 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/button"
+        android:id="@+id/start_bttn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -72,7 +72,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.216"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/start_bttn"
         app:layout_constraintVertical_bias="0.676" />
 
     <TextView
@@ -81,10 +81,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start Session"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        app:layout_constraintBottom_toBottomOf="@+id/start_bttn"
+        app:layout_constraintEnd_toEndOf="@+id/start_bttn"
+        app:layout_constraintStart_toStartOf="@+id/start_bttn"
+        app:layout_constraintTop_toTopOf="@+id/start_bttn" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -95,7 +95,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/bluecow" />
+        android:src="@drawable/bluecow" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -107,7 +107,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4"
         app:layout_constraintVertical_bias="0.953"
-        tools:srcCompat="@drawable/blueberry" />
+        android:src="@drawable/blueberry"/>
 
     <ImageView
         android:id="@+id/imageView7"
@@ -119,7 +119,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4"
         app:layout_constraintVertical_bias="0.766"
-        tools:srcCompat="@drawable/blueberry" />
+        android:src="@drawable/blueberry" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -131,6 +131,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.12"
-        tools:srcCompat="@drawable/blueberry" />
+        android:src="@drawable/blueberry" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

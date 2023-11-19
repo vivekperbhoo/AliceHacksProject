@@ -37,7 +37,6 @@ public class MovieSelector extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_selector);
         seshText= findViewById(R.id.search_text);
-        select_bttn= findViewById(R.id.select);
         movies= new ArrayList<>();
 
         recyclerView= findViewById(R.id.recycle);
@@ -81,23 +80,15 @@ public class MovieSelector extends AppCompatActivity {
                 return true;
             }
         });
-        select_bttn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String tag = (String)v.getTag();
-                selectMovie(tag);
-            }
-        });
-
-
     }
 
-    private void selectMovie(String tag) {
-        for(Movie.ResultsDTO kok: movies){
-            if(kok.getId().equals(tag)){
-
+    public void selectMovie(View view) {
+        String tag= (String) view.getTag();
+        for(Movie.ResultsDTO kok: movies) {
+            if (kok.getId().equals(tag)) {
+                System.out.println("oko");
             }
-        }
 
+        }
     }
 }

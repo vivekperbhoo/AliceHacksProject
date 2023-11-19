@@ -22,10 +22,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class StartActivity extends AppCompatActivity {
     private ImageButton create, join;
     private EditText name;
     private DatabaseReference reference;
+    private ArrayList<User> seshUsers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class StartActivity extends AppCompatActivity {
         join= findViewById(R.id.join_sesh);
         create= findViewById(R.id.create_sesh);
         name= findViewById(R.id.name);
+        seshUsers= new ArrayList<>();
         reference= FirebaseDatabase.getInstance().getReference("Users");
          create.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -70,12 +74,12 @@ public class StartActivity extends AppCompatActivity {
     private void createSession() {
         String username= name.getText().toString();
         User user= new User(username,false);
-        Session sesh= new Session("session"+user.getName(),false);
+        seshUsers.add(user);
+        Session sesh= new Session("session"+user.getName(),false,seshUsers);
         reference.child("Current users").child(user.getName()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 reference.child("Session").child(sesh.getSessionID()).setValue(sesh);
-                reference.child("Session").child(sesh.getSessionID()).child("Session Users").child(user.getName()).setValue(user);
                 Toast.makeText(StartActivity.this,"Session Created",Toast.LENGTH_SHORT).show();
                 Intent intent= new Intent(getApplicationContext(),CreateSession.class);
                 intent.putExtra("Seshname","session"+user.getName());

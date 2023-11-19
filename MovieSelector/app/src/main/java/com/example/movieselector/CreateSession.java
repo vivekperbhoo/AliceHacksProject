@@ -28,6 +28,7 @@ public class CreateSession extends AppCompatActivity {
     private ListView listView;
     private Intent intent;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,19 +41,16 @@ public class CreateSession extends AppCompatActivity {
         String seshId= intent.getStringExtra("Seshname");
         sesId.setText(sesId.getText()+" "+seshId);
         ListAdapter listAdapter= new ListAdapter(CreateSession.this,users);
-        reference= FirebaseDatabase.getInstance().getReference("Session Users");
-        reference.addValueEventListener(new ValueEventListener() {
+        reference= FirebaseDatabase.getInstance().getReference("Users").child("Session");
+        reference.child(seshId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 users.clear();
                 if(snapshot.exists()){
-                    for (DataSnapshot child: snapshot.getChildren()) {
-                        if(child.exists()){
-                            User user = child.getValue(User.class);
-                            if(user!=null){
-                                users.add(user);
-                            }
-                        }
+                    Session sesh= snapshot.getValue(Session.class);
+                    if(sesh!=null) {
+                        Log.d("sessionusers", sesh.getSessionUsers().get(0).getName());
+                        users.addAll(sesh.getSessionUsers());
                     }
                 }listAdapter.notifyDataSetChanged();
 
